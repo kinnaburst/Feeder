@@ -1,0 +1,5 @@
+<h1>
+	<%= @feed.name %>
+	<%= button_to 'Edit', edit_feed_path(@feed.id), method: :get %>
+	<%= button_to 'Delete', feed_path(@feed.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+</h1>

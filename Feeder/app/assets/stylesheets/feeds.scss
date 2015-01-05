@@ -1,0 +1,34 @@
+// Place all the styles related to the feeds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 {	
+	text-align: right;
+	width: 66%;
+	margin: 0 auto;
+	border-bottom: 1px solid #000;
+}
+form {
+	width: 66%;
+	margin: 0 auto;
+	display: inline;
+}
+label {
+	display: block;
+	font-style: italic;
+	margin-top: 1em;
+}
+input[type=text], input[type=password] {
+	display: block;
+	width: 100%;
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border-radius: 0.5em;
+	border: 1px solid #000;
+}
+input[type=submit] {
+	border: 1px solid #000;
+	border-radius: 0.5em;
+	padding: 0.5em 1em;
+	margin-top: 1em;
+}
