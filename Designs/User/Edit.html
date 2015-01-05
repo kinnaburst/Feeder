@@ -13,6 +13,10 @@
 		<input type="password" name="confirm" placeholder="Confirm your password"><br>
 	</div>
 	<div>
+		<input type="checkbox" name="admin">
+		<label>Site administrator</label>
+	</div>
+	<div>
 		<button type="submit">Signup</button>
 	</div>
 </form>
@@ -34,7 +38,7 @@
 	form label {
 		font-style: italic;
 	}
-	form input {
+	input[type=text], input[type=password] {
 		width: 100%;
 		margin: 0.25em 0;
 		padding: 0.5em;
