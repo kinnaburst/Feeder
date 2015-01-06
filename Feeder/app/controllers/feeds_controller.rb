@@ -5,6 +5,7 @@ class FeedsController < ApplicationController
 
   def show
     @feed = Feed.find(params[:id])
+    @articles = update_articles(@feed)
   end
 
   def new
@@ -39,5 +40,24 @@ class FeedsController < ApplicationController
 
     def feed_params
       params.require(:feed).permit(:name, :url)
+    end
+
+    def update_articles(feed)
+      data = Feedjira::Feed.fetch_and_parse feed.url
+      logger.debug data.inspect
+      data.entries.each do |entry|
+        a = Article.find_by(link: entry.url)
+        if !a
+       #   a = Article.new
+       #   a.feed = feed.id
+       #   a.title = entry.title
+       #   a.author = entry.author
+       #   a.posted = entry.published
+       #   a.snippet = entry.summary
+       #   a.link = entry.url
+       #   a.save
+        end
+      end
+      #Article.find_by(feed: feed.id)
     end
 end
