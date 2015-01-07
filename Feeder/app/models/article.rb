@@ -1,3 +1,3 @@
 class Article < ActiveRecord::Base
-	has_one :feed
+	belongs_to :feed
 end

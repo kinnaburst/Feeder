@@ -5,6 +5,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @articles = Array.new
+    @user.feeds.all.each do |feed|
+      @articles += refresh_feed feed
+    end
+    @articles.sort! { |a,b| a.posted <=> b.posted }.reverse!
   end
 
   def new
@@ -13,6 +18,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
+    login user
     redirect_to user
   end
 
@@ -23,9 +29,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-  end
-
-  def login
   end
 
 
