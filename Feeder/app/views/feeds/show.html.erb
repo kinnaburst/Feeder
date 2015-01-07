@@ -4,6 +4,10 @@
 	<%= button_to 'Delete', feed_path(@feed.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 </h1>
 
-<%= content_tag :div, class: 'feed_data', data: { names: [@feed.name], urls: [@feed.url] } do %>
-Loading feeds ...
+<% @articles.each do |article| %>
+	<article>
+		<h2><%= link_to article.title, article.link %></h2>
+		<p class="details">Written by <%= article.author %> on <%= article.posted %></p>
+		<p><%= raw article.snippet %></p>
+	</article>
 <% end %>

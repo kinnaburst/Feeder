@@ -2,11 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+	font-family: sans-serif;
+}
 h1 {	
 	text-align: right;
+	border-bottom: 1px solid #000;
+}
+main {
+	display: block;
 	width: 66%;
 	margin: 0 auto;
-	border-bottom: 1px solid #000;
 }
 form {
 	width: 66%;
@@ -31,4 +37,24 @@ input[type=submit] {
 	border-radius: 0.5em;
 	padding: 0.5em 1em;
 	margin-top: 1em;
+}
+article {
+	padding-bottom: 2em;
+}
+h2 {
+	border-bottom: 1px solid #000;
+	margin: 0;
+	padding-bottom: 0.25em;
+}
+h2 a {
+	text-decoration: none;
+}
+p.details {
+	font-size: 0.8em;
+	font-style: italic;
+	margin: 0.25em 0 0 0;
+	text-align: right;
+}
+p {
+	margin: 1em 0;
 }
