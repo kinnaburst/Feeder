@@ -3,9 +3,9 @@
 <ul>
 <% @feeds.each do |feed| %>
 	<li>
-		<%= link_to feed.name, user_feed_path(@user, feed) %>
-	  <%= button_to 'Edit', edit_user_feed_path(current_user, feed), method: :get %>
-	  <%= button_to 'Delete', user_feed_path(current_user, feed), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= link_to feed.name, feed_path(feed, username: @user.username) %>
+	  <%= button_to 'Edit', edit_feed_path(feed, username: @user.username), method: :get %>
+	  <%= button_to 'Delete', feed_path(feed, username: @user.username), method: :delete, data: { confirm: 'Are you sure?' } %>
 	</li>
 <% end %>
 </ul>

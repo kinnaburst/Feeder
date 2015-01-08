@@ -1,7 +1,8 @@
 class FeedsController < ApplicationController
 
+  before_filter :login_check
+
   def index
-    @user = User.find(params[:user_id])
     @feeds = @user.feeds.all
   end
 
@@ -17,7 +18,7 @@ class FeedsController < ApplicationController
   def create
     feed = current_user.feeds.create(feed_params)
     refresh_feed(feed)
-    redirect_to url_for [current_user, feed]
+    redirect_to feed
   end
 
   def edit
@@ -35,7 +36,11 @@ class FeedsController < ApplicationController
     feed = Feed.find(params[:id])
     feed.destroy
     flash[:notice] = 'Feed deleted.'
-    redirect_to user_feeds_url(current_user)
+    redirect_to feeds_url
+  end
+
+  def default_url_options(options={})
+    { username: params[:username] }
   end
 
 
@@ -44,4 +49,5 @@ class FeedsController < ApplicationController
     def feed_params
       params.require(:feed).permit(:name, :url)
     end
+
 end
