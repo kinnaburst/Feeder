@@ -1,0 +1,29 @@
+@media screen and (max-width: 900px) {
+  img {
+    max-width: 300px;
+    height: auto;
+  }
+  header #logo {
+    display: block;
+    margin: 0 auto;
+  }
+  header nav {
+    display: none;
+  }
+  .mobile-nav {
+    background-color: #34495E;
+    display: block;
+  }
+  .mobile-nav a {
+    font-size: 1.2em;
+    color: #F1F1F1;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 1em 0;
+    text-align: center;
+  }
+  .mobile-nav a:hover {
+    color: #E74C3C;
+  }
+}

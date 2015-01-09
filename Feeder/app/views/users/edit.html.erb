@@ -1,9 +1,9 @@
-<h1>Change Your Password</h1>
+<% content_for :page_title do %>Change Your Password<% end %>
 
 <%= form_for current_user, url: user_path(username: current_user.username) do |f| %>
 
 	<%= f.label :old_password %>
-	<%= f.password_field :old_password %>
+	<%= f.password_field :old_password, autofocus: true %>
 
 	<%= f.label :password %>
 	<%= f.password_field :password %>

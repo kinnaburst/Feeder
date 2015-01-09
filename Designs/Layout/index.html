@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>The Layout for Feeder</title>
+    <link href='http://fonts.googleapis.com/css?family=Kotta+One|Marvel|Raleway' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style type="text/css" media="screen">
+      body {
+        background-color: #F1F1F1;
+        font-family: Raleway;
+        color: #34495E;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        background-color: #2BC6B8;
+        font-family: Marvel;
+        text-align: right;
+        margin: 0 0 0.5em 0;
+        padding: 0.6em 1em;
+        border-bottom-left-radius: 0.6em;
+        border-bottom-right-radius: 0.6em;
+      }
+      h2 {
+        border-bottom: 1px solid #34495E;
+        font-family: "Kotta One";
+        margin: 0 0 0.25em 0;
+      }
+      p.details {
+        color: #2BC6B8;
+        text-align: right;
+        font-size: 0.8em;
+        font-style: italic;
+        margin: 0;
+      }
+      header {
+        background: #34495E;
+        height: 80px;
+        position: relative;
+      }
+      header #logo {
+        display: inline-block;
+        width: 208px;
+        height: 100%;
+        background-image: url(images/logo.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: 20px;
+      }
+      header nav {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        margin-right: 1em;
+      }
+      header nav a {
+        color: #F1F1F1;
+        font-size: 1.2em;
+        text-decoration: none;
+        display: inline-block;
+        padding: 0.6em 1em;
+      }
+      h2 a {
+        color: inherit;
+        text-decoration: none;
+      }
+      p a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      a:hover {
+        color: #E74C3C;
+      }
+      article {
+        margin-bottom: 5em;
+      }
+      main {
+        display: block;
+        width: 66%;
+        min-width: 300px;
+        margin: 0 auto;
+      }
+      form label {
+        color: #34495E;
+        display: block;
+        width: 66%;
+        min-width: 300px;
+        margin: 0 auto;
+        font-size: 1.2em;
+      }
+      form input {
+        color: #34495E;
+        font-family: Raleway;
+        font-size: 1.2em;
+        border: 1px solid #34495E;
+        border-radius: 0.6em;
+      }
+      form input:focus {
+        border-color: #2BC6B8;
+      }
+      form input[type=submit] {
+        background-color: #2BC6B8;
+      }
+      main form input {
+        display: block;
+        width: 66%;
+        padding: 0.3em 0.6em;
+        margin: 0.6em auto 2em;
+      }
+      nav form {
+        display: inline-block;
+        margin-bottom: 0.3em;
+      }
+      nav form label {
+        color: #F1F1F1;
+      }
+      nav form input {
+        padding: 0.3em;
+      }
+      nav form input[type=text], nav form input[type=password] {
+        width: 8em;
+      }
+      .flash {
+        font-size: 1.2em;
+        display: block;
+        border-radius: 0.6em;
+        border-style: solid;
+        border-width: 1px;
+        text-align: center;
+        padding: 0.6em;
+        margin: 1em;
+      }
+      .notice {
+        color: rgba(43,198,184,1);
+        border-color: rgba(43,198,184,1);
+        background-color: rgba(43,198,184,0.1);
+      }
+      .warning {
+        color: rgba(231,76,60,1);
+        border-color: rgba(231,76,60,1);
+        background-color: rgba(231,76,60,0.1);
+      }
+      .mobile-nav {
+        display: none;
+      }
+    </style>
+    <style type="text/css" media="screen and (max-device-width: 480px)">
+      header #logo {
+        display: block;
+        margin: 0 auto;
+      }
+      header nav {
+        display: none;
+      }
+      .mobile-nav {
+        background-color: #34495E;
+        display: block;
+      }
+      .mobile-nav a {
+        font-size: 1.2em;
+        color: #F1F1F1;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        padding: 1em 0;
+        text-align: center;
+      }
+      .mobile-nav a:hover {
+        color: #E74C3C;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#"><div id="logo"></div></a>
+      <nav>
+        <a href="#">Signup</a>
+        <form>
+          <input type="text" placeholder="username">
+          <input type="password" placeholder="password">
+          <input type="submit" value="Login">
+        </form>
+      </nav>
+    </header>
+    <main>
+      <h1>Page Title</h1>
+      <div class="flash notice">This is a notice</div>
+      <div class="flash warning">This is a warning</div>
+      <article>
+        <h2><a href="#">Article Title</a></h2>
+        <p class="details">Article <a href="#">details</a></p>
+        <p>The article</p>
+      </article>
+      <article>
+        <h2><a href="#">Article Title</a></h2>
+        <p class="details">Article <a href="#">details</a></p>
+        <p>The article</p>
+      </article>
+      <article>
+        <h2><a href="#">Article Title</a></h2>
+        <p class="details">Article <a href="#">details</a></p>
+        <p>The article</p>
+      </article>
+      <form>
+        <label>Username</label>
+        <input type="text">
+        <label>Password</label>
+        <input type="password">
+        <input type="submit" value="Login">
+      </form>
+    </main>
+    <nav class="mobile-nav">
+      <a href="#">Signup</a>
+      <a href="#">Login</a>
+    </nav>
+  </body>
+</html>

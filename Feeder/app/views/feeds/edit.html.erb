@@ -1,3 +1,3 @@
-<h1>Edit <%= @feed.name %></h1>
+<% content_for :page_title do %>Edit <%= @feed.name %><% end %>
 
 <%= render 'form' %>

@@ -1,13 +1,15 @@
-<h1>
-	<%= @feed.name %>
-	<%= button_to 'Edit', edit_feed_path(@feed), method: :get %>
-	<%= button_to 'Delete', feed_path(@feed), method: :delete, data: { confirm: 'Are you sure?' } %>
-</h1>
+<% content_for :page_title do %><%= @feed.name %><% end %>
 
-<% @articles.each do |article| %>
-	<article>
-		<h2><%= link_to article.title, article.link %></h2>
-		<p class="details">Written by <%= article.author %> on <%= article.posted %></p>
-		<p><%= raw article.snippet %></p>
-	</article>
-<% end %>
+<p class="page-details">
+  [
+  <%= link_to 'Edit', edit_feed_path(@feed), class: 'page-btn', method: :get %>
+  |
+  <%= link_to 'Delete', feed_path(@feed), class: 'page-btn', method: :delete, data: { confirm: 'Are you sure?' } %>
+  ]
+</p>
+
+<%= render 'shared/pagination' %>
+
+<%= render 'shared/articles' %>
+
+<%= render 'shared/pagination' %>

@@ -1,0 +1,195 @@
+
+
+@import url(http://fonts.googleapis.com/css?family=Kotta+One|Marvel|Raleway);
+
+body {
+  background-color: #F1F1F1;
+  font-family: Raleway;
+  color: #34495E;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  background-color: #2BC6B8;
+  font-family: Marvel;
+  text-align: right;
+  margin: 0 0 0.5em 0;
+  padding: 0.6em 1em;
+  border-bottom-left-radius: 0.6em;
+  border-bottom-right-radius: 0.6em;
+}
+h2 {
+  border-bottom: 1px solid #34495E;
+  font-family: "Kotta One";
+  margin: 0 0 0.25em 0;
+}
+p.details {
+  color: #2BC6B8;
+  text-align: right;
+  font-size: 0.8em;
+  font-style: italic;
+  margin: 0;
+}
+header {
+  background: #34495E;
+  height: 80px;
+  position: relative;
+}
+header #logo {
+  display: inline-block;
+  width: 208px;
+  height: 100%;
+  background-image: url(logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 20px;
+}
+header nav {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  margin-right: 1em;
+}
+header nav a {
+  color: #F1F1F1;
+  font-size: 1.2em;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.6em 1em;
+}
+h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+p a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: #E74C3C;
+}
+article {
+  margin-bottom: 5em;
+}
+main {
+  display: block;
+  width: 66%;
+  min-width: 300px;
+  margin: 0 auto;
+}
+form label {
+  color: #34495E;
+  display: block;
+  width: 66%;
+  min-width: 300px;
+  margin: 0 auto;
+  font-size: 1.2em;
+}
+form input {
+  color: #34495E;
+  font-family: Raleway;
+  font-size: 1.2em;
+  border: 1px solid #34495E;
+  border-radius: 0.6em;
+}
+form input:focus {
+  border-color: #2BC6B8;
+}
+form input[type=submit] {
+  background-color: #2BC6B8;
+}
+main form input {
+  display: block;
+  width: 66%;
+  padding: 0.3em 0.6em;
+  margin: 0.6em auto 2em;
+}
+.form-footer {
+  margin-top: 3em;
+}
+nav form {
+  display: inline-block;
+  margin-bottom: 0.3em;
+}
+nav form label {
+  color: #F1F1F1;
+}
+nav form input {
+  padding: 0.3em;
+}
+nav form input[type=text], nav form input[type=password] {
+  width: 8em;
+}
+.flash {
+  font-size: 1.2em;
+  display: block;
+  border-radius: 0.6em;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  padding: 0.6em;
+  margin: 1em;
+}
+.notice {
+  color: rgba(43,198,184,1);
+  border-color: rgba(43,198,184,1);
+  background-color: rgba(43,198,184,0.1);
+}
+.warning {
+  color: rgba(231,76,60,1);
+  border-color: rgba(231,76,60,1);
+  background-color: rgba(231,76,60,0.1);
+}
+.mobile-nav {
+  display: none;
+}
+.page-details {
+  margin: -1em 0 1em 0;
+  text-align: right;
+  padding-right: 1em;
+}
+.feed-list {
+  font-size: 1.2em;
+  color: #34495E;
+  list-style: none;
+  li {
+    margin-bottom: 0.5em;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #E74C3C;
+  }
+}
+.feed-controls {
+  color: #2BC6B8;
+  font-size: 0.8em;
+  margin-left: 1em;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #E74C3C;
+  }
+}
+.pagination {
+  text-align: center;
+  margin: 1em auto;
+  padding: 0.5em 0;
+  font-size: 1.2em;
+  border-top: 1px dotted #34495E;
+  border-bottom: 1px dotted #34495E;
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  a:hover {
+    color: #E74C3C;
+  }
+}

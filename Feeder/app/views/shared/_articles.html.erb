@@ -1,0 +1,8 @@
+<% page_start = (@page-1) * @page_size %>
+<% @articles.slice(page_start, @page_size).each do |article| %>
+  <article>
+    <h2><%= link_to article.title, article.link %></h2>
+    <p class="details">Written by <%= article.author %> on <%= article.posted %> in <%= link_to article.feed.name, feed_path(article.feed, username: @user.username) %></p>
+    <p><%= raw article.snippet %></p>
+  </article>
+<% end %>

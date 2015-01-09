@@ -1,11 +1,16 @@
-<h1>My Feed List</h1>
+<% content_for :page_title do %>My Feed List<% end %>
 
-<ul>
+<ul class="feed-list">
 <% @feeds.each do |feed| %>
 	<li>
 		<%= link_to feed.name, feed_path(feed, username: @user.username) %>
-	  <%= button_to 'Edit', edit_feed_path(feed, username: @user.username), method: :get %>
-	  <%= button_to 'Delete', feed_path(feed, username: @user.username), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <span class="feed-controls">
+    [
+	  <%= link_to 'Edit', edit_feed_path(feed, username: @user.username), method: :get %>
+    |
+	  <%= link_to 'Delete', feed_path(feed, username: @user.username), method: :delete, data: { confirm: 'Are you sure?' } %>
+    ]
+    </span>
 	</li>
 <% end %>
 </ul>

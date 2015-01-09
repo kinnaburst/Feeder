@@ -12,6 +12,12 @@ class UsersController < ApplicationController
       @articles += refresh_feed feed
     end
     @articles.sort! { |a,b| a.posted <=> b.posted }.reverse!
+    if params.has_key?(:page)
+      @page = params[:page].to_i
+    else
+      @page = 1
+    end
+    @page_size = 5
   end
 
   def new
@@ -19,28 +25,41 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    login user
-    redirect_to user_url(username: user.username)
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      login user
+      redirect_to user_url(username: @user.username)
+    else
+      flash.now[:warning] = @user.errors.full_messages.join('<br>')
+      render 'new'
+    end
   end
 
   def edit
   end
 
   def update
-    logger.debug(params.inspect)
     if current_user.authenticate(params[:user][:old_password])
-      current_user.update(user_params)
-      redirect_to user_path(username: current_user.username)
+      if current_user.update(user_params)
+        redirect_to user_path(username: current_user.username)
+      else
+        flash.now[:warning] = current_user.errors.full_messages.join('<br>')
+        render 'edit'
+      end
     else
-      flash.now[:notice] = 'Old password is incorrect.'
+      flash.now[:warning] = 'Old password is incorrect'
       render 'edit'
     end
   end
 
   def destroy
-    current_user.destroy
+    current_user.delete
     redirect_to root_url
+  end
+
+  def default_url_options(options={})
+    { username: params[:username] }
   end
 
 

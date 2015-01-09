@@ -2,43 +2,54 @@
 <html>
 <head>
   <title>Feeder</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<nav>
-  <% if logged_in? %>
-    <%= link_to 'My Feed', user_path(username: current_user.username) %>
-    |
-    <%= link_to 'Feed List', feeds_path(username: current_user.username) %>
-    |
-    <%= link_to 'Add Feed', new_feed_path(username: current_user.username) %>
-    |
-    <%= link_to 'Change Password', edit_user_path(username: current_user.username) %>
-    |
-    <%= link_to 'Logout', logout_path %>
-  <% else %>
-    <%= link_to 'Home', root_path %>
-    |
-  	<%= link_to 'Signup', signup_path %>
-  	|
-  	<%= link_to 'Login', login_path %>
-  <% end %>
-</nav>
-
-<% if flash[:notice] %>
-	<div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
-<% if flash[:warning] %>
-	<div class="notice"><%= flash[:warning] %></div>
-<% end %>
+<header>
+  <%=  link_to raw('<div id="logo"></div>'), root_path %>
+  <nav>
+    <% if logged_in? %>
+      <%= link_to 'My Feed', user_path(username: current_user.username) %>
+      <%= link_to 'Feed List', feeds_path(username: current_user.username) %>
+      <%= link_to 'Add Feed', new_feed_path(username: current_user.username) %>
+      <%= link_to 'Change Password', edit_user_path(username: current_user.username) %>
+      <%= link_to 'Logout', logout_path %>
+    <% else %>
+    	<%= link_to 'Signup', signup_path %>
+    	<%= link_to 'Login', login_path %>
+    <% end %>
+  </nav>
+</header>
 
 <main>
+
+  <h1><%= yield :page_title %></h1>
+
+  <% if flash[:notice] %>
+    <div class="flash notice"><%= raw flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:warning] %>
+    <div class="flash warning"><%= raw flash[:warning] %></div>
+  <% end %>
+  
 	<%= yield %>
 </main>
+
+<nav class="mobile-nav">
+  <% if logged_in? %>
+    <%= link_to 'My Feed', user_path(username: current_user.username) %>
+    <%= link_to 'Feed List', feeds_path(username: current_user.username) %>
+    <%= link_to 'Add Feed', new_feed_path(username: current_user.username) %>
+    <%= link_to 'Change Password', edit_user_path(username: current_user.username) %>
+    <%= link_to 'Logout', logout_path %>
+  <% else %>
+    <%= link_to 'Signup', signup_path %>
+    <%= link_to 'Login', login_path %>
+  <% end %>
+</nav>
 
 </body>
 </html>
