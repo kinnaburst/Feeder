@@ -47,4 +47,6 @@ gem 'feedjira'
 group :production do
   gem 'pg'      # Postgres database
   gem 'unicorn' # Unicorn web server
+  gem 'rails_stdout_logging'
+  gem 'rails_serve_static_assets'
 end
