@@ -1,4 +1,6 @@
 <% page_start = (@page-1) * @page_size %>
+
+<%= link_to '[refresh]', url_for(params), class: 'refresh-link' %>
 <% @articles.slice(page_start, @page_size).each do |article| %>
   <article>
     <h2><%= link_to article.title, article.link %></h2>

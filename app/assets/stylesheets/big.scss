@@ -58,6 +58,17 @@ header nav a {
   display: inline-block;
   padding: 0.6em 1em;
 }
+footer {
+  margin-top: 1em;
+  border-top: 1px solid #34495E;
+  text-align: center;
+  font-size: 0.8em;
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
 h2 a {
   color: inherit;
   text-decoration: none;
@@ -192,4 +203,10 @@ nav form input[type=text], nav form input[type=password] {
   a:hover {
     color: #E74C3C;
   }
+}
+.refresh-link {
+  display: block;
+  text-align: right;
+  color: #2BC6B8;
+  text-decoration: none;
 }
