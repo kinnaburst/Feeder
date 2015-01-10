@@ -9,7 +9,8 @@
 </head>
 <body>
 <header>
-  <%=  link_to raw('<div id="logo"></div>'), root_path %>
+  <% logo_link = current_user ? user_path : root_path %>
+  <%=  link_to raw('<div id="logo"></div>'), logo_link %>
   <nav>
     <% if logged_in? %>
       <%= link_to 'My Feed', user_path(username: current_user.username) %>
