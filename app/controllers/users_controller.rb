@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+  class UsersController < ApplicationController
 
   before_filter :login_check, only: [:show, :edit, :update, :destroy]
 
@@ -7,11 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
-    @articles = Array.new
-    @user.feeds.all.each do |feed|
-      @articles += refresh_feed feed
-    end
-    @articles.sort! { |a,b| a.posted <=> b.posted }.reverse!
+    refresh_feeds(user: @user)
+    @articles = @user.articles.order(published: :desc)
     if params.has_key?(:page)
       @page = params[:page].to_i
     else

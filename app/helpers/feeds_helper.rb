@@ -1,44 +1,105 @@
 module FeedsHelper
 
-  def refresh_feed(feed, override_update = false)
-    refresh_urls [feed.url], override_update
+  def refresh_feeds(**args)
+    # Check for require keys (:user)
+    if not args.has_key?(:user)
+      return
+    end
+
+    user = args[:user]
+
+    if args.has_key?(:feed)
+      feed = args[:feed]
+      refresh_feed(feed: feed, user: user)
+    else
+      user.feeds.all.each do |feed|
+        refresh_feed(feed: feed, user: user)
+      end
+    end
   end
 
-  def refresh_urls(urls, override_update = false)
-    articles = Array.new
+  def refresh_feed(**args)
+    # Check for require keys (:feed)
+    if not args.has_key?(:feed)
+      return
+    end
 
-    urls.each do |url|
-      user_feed = Feed.find_by(url: url)
+    feed = args[:feed]
 
-      if (override_update or !user_feed.last_updated or user_feed.last_updated.advance(hours: 1) < DateTime.now)
-
-        feed = Feedjira::Feed.fetch_and_parse url
-
-        feed.entries.each do |entry|
-          a = Article.find_by(link: entry.url)
-          if !a
-            a = user_feed.articles.new
-            a.title = entry.title
-            a.author = entry.author
-            a.posted = entry.published
-            a.snippet = entry.summary
-            a.link = entry.url
-            a.save
-          end
-          articles.push a
-        end
-
-        user_feed.last_updated = DateTime.now
-        user_feed.save
-
+    if feed.last_updated.nil? or feed.last_updated.advance(minutes: 15) < DateTime.now
+      if args.has_key?(:user)
+        create_articles(feed: feed, user: args[:user])
       else
+        create_articles(feed: feed)
+      end
+      feed.last_updated = DateTime.now
+      feed.save
+    end
+  end
 
-        articles += user_feed.articles
+  def get_feed_title(**args)
+    # Check for require keys (:feed)
+    if not args.has_key?(:feed)
+      return
+    end
 
+    feed = args[:feed]
+    @data ||= Feedjira::Feed.fetch_and_parse feed.url
+
+    @data.title
+  end
+
+  def get_feed_entries(**args)
+    # Check for require keys (:feed)
+    if not args.has_key?(:feed)
+      return
+    end
+
+    feed = args[:feed]
+    @data ||= Feedjira::Feed.fetch_and_parse feed.url
+
+    @data.entries
+  end
+
+  def create_articles(**args)
+    # Check for required keys (:feed)
+    if not args.has_key?(:feed)
+      return
+    end
+
+    feed = args[:feed]
+    entries = args.has_key?(:entries) ? args[:entries] : get_feed_entries(feed: feed)
+
+    new_articles = []
+    entries.each do |entry|
+      a = Article.find_by(url: entry.url)
+      if a.nil?
+        a = feed.articles.new
+        a.title = entry.title
+        a.published = entry.published
+        a.save
+        new_articles.push(a)
       end
     end
 
-    articles
+    if args.has_key?(:user)
+      user = args[:user]
+      create_user_articles(user: user, articles: new_articles)
+    end
   end
-  
+
+  def create_user_articles(**args)
+    # Check for required keys (:user, :articles)
+    if not args.has_key?(:user) or not args.has_key?(:articles)
+      return
+    end
+
+    user = args[:user]
+    articles = args[:articles]
+
+    articles.each do |article|
+      user.user_articles.create(article: article)
+    end
+  end
+
 end

@@ -1,10 +1,7 @@
 <%= form_for @feed do |f| %>
 
-	<%= f.label :name %>
-	<%= f.text_field :name, autofocus: true %>
-
 	<%= f.label :url %>
-	<%= f.url_field :url %>
+	<%= f.url_field :url, autofocus: true %>
 
 	<%= f.submit %>
 

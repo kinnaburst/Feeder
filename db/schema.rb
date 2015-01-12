@@ -11,29 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107193147) do
+ActiveRecord::Schema.define(version: 20150112195849) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "feed_id"
     t.string   "title"
-    t.string   "author"
-    t.string   "posted"
-    t.text     "snippet"
-    t.string   "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "url"
+    t.datetime "published"
   end
 
+  add_index "articles", ["url"], name: "index_articles_on_url", unique: true
+
   create_table "feeds", force: :cascade do |t|
-    t.string   "name"
     t.string   "url"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.datetime "last_updated"
-    t.integer  "user_id"
+    t.string   "name"
   end
 
-  add_index "feeds", ["user_id"], name: "index_feeds_on_user_id"
+  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "feed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "subscriptions", ["feed_id"], name: "index_subscriptions_on_feed_id"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
+
+  create_table "user_articles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "article_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "hidden",     default: false
+    t.boolean  "clicked",    default: false
+  end
+
+  add_index "user_articles", ["article_id"], name: "index_user_articles_on_article_id"
+  add_index "user_articles", ["user_id"], name: "index_user_articles_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -41,5 +62,7 @@ ActiveRecord::Schema.define(version: 20150107193147) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
   end
+
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
