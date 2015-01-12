@@ -34,6 +34,7 @@ class FeedsController < ApplicationController
         else
           current_user.subscriptions.create(feed: @feed)
           @feed.name = feed_data.title
+          @feed.last_updated = DateTime.now
           @feed.save
           create_articles(user: current_user, feed: @feed, entries: feed_data.entries)
           redirect_to @feed
