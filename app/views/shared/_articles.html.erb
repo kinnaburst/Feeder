@@ -3,7 +3,7 @@
 <%= link_to image_tag('refresh.png', class: 'refresh-img') + ' refresh', url_for(params), class: 'refresh-link' %>
 <% @articles.slice(page_start, @page_size).each do |article| %>
   <article>
-    <h2><%= link_to article.title, article.url %></h2>
+    <h2><%= link_to article.title, article.url, target: '_blank' %></h2>
     <p class="details">
       <%= article.published.to_formatted_s(:long) %>
       in <%= link_to article.feed.name, article.feed %>
