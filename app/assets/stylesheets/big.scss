@@ -1,17 +1,23 @@
-
-
 @import url(http://fonts.googleapis.com/css?family=Kotta+One|Marvel|Raleway);
 
+$background-color: rgba(241,241,241,1);
+$primary-color: rgba(52,73,94,1);
+$highlight-color: rgba(43,198,184,1);
+$highlight-color-faded: rgba(43,198,184,0.1);
+$logo-color: rgba(231,76,60,1);
+$logo-color-faded: rgba(231,76,60,0.1);
+
 body {
-  background-color: #F1F1F1;
+  background-color: $background-color;
   font-family: Raleway;
-  color: #34495E;
+  color: $primary-color;
   min-height: 100%;
   margin: 0;
   padding: 0;
 }
+
 h1 {
-  background-color: #2BC6B8;
+  background-color: $highlight-color;
   font-family: Marvel;
   text-align: right;
   margin: 0 auto 0.5em auto;
@@ -20,121 +26,150 @@ h1 {
   border-bottom-right-radius: 0.6em;
   width: 70%;
 }
+
 h2 {
-  border-bottom: 1px solid #34495E;
+  border-bottom: 1px solid $primary-color;
   font-family: "Kotta One";
   margin: 0 0 0.25em 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
-p.details {
-  color: #2BC6B8;
-  text-align: right;
-  font-size: 0.8em;
-  font-style: italic;
-  margin: 0;
-}
+
 header {
-  background: #34495E;
+  background: $primary-color;
   height: 80px;
   position: relative;
+
+  #logo {
+    display: inline-block;
+    width: 208px;
+    height: 100%;
+    background-image: image-url('logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 20px;
+  }
+  nav {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    margin-right: 1em;
+
+    a {
+      color: $background-color;
+      font-size: 1.2em;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.6em 1em;
+    }
+
+    form {
+      display: inline-block;
+      margin-bottom: 0.3em;
+
+      label {
+        color: $background-color;
+      }
+
+      input {
+        padding: 0.3em;
+      }
+
+      input[type=text], input[type=password] {
+        width: 8em;
+      }
+    }
+  }
 }
-header #logo {
-  display: inline-block;
-  width: 208px;
-  height: 100%;
-  background-image: image-url('logo.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-left: 20px;
-}
-header nav {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  margin-right: 1em;
-}
-header nav a {
-  color: #F1F1F1;
-  font-size: 1.2em;
-  text-decoration: none;
-  display: inline-block;
-  padding: 0.6em 1em;
-}
+
 footer {
   margin-top: 1em;
   padding: 1em 0;
-  border-top: 1px dotted #34495E;
+  border-top: 1px dotted $primary-color;
   text-align: center;
   font-size: 0.8em;
+
   a {
     color: inherit;
     text-decoration: none;
     font-weight: bold;
   }
 }
-h2 a {
-  color: inherit;
-  text-decoration: none;
+
+p {
+  .details {
+    color: $highlight-color;
+    text-align: right;
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0; 
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
-p a {
-  color: inherit;
-  text-decoration: none;
-  font-weight: bold;
-}
+
 a:hover {
-  color: #E74C3C;
+  color: $logo-color;
 }
+
 article {
   margin-bottom: 5em;
 }
+
 main {
   display: block;
   width: 66%;
   min-width: 300px;
   margin: 0 auto;
+
+  form {
+    input {
+      display: block;
+      width: 66%;
+      padding: 0.3em 0.6em;
+      margin: 0.6em auto 2em;
+    }
+  }
 }
-form label {
-  color: #34495E;
-  display: block;
-  width: 66%;
-  min-width: 300px;
-  margin: 0 auto;
-  font-size: 1.2em;
+
+form {
+  label {
+    color: $primary-color;
+    display: block;
+    width: 66%;
+    min-width: 300px;
+    margin: 0 auto;
+    font-size: 1.2em;
+  }
+
+  input {
+    color: $primary-color;
+    font-family: Raleway;
+    font-size: 1.2em;
+    border: 1px solid $primary-color;
+    border-radius: 0.6em;
+  }
+
+  input:focus {
+    border-color: $highlight-color;
+  }
+
+  input[type=submit] {
+    background-color: $highlight-color;
+  }
 }
-form input {
-  color: #34495E;
-  font-family: Raleway;
-  font-size: 1.2em;
-  border: 1px solid #34495E;
-  border-radius: 0.6em;
-}
-form input:focus {
-  border-color: #2BC6B8;
-}
-form input[type=submit] {
-  background-color: #2BC6B8;
-}
-main form input {
-  display: block;
-  width: 66%;
-  padding: 0.3em 0.6em;
-  margin: 0.6em auto 2em;
-}
+
 .form-footer {
   margin-top: 3em;
 }
-nav form {
-  display: inline-block;
-  margin-bottom: 0.3em;
-}
-nav form label {
-  color: #F1F1F1;
-}
-nav form input {
-  padding: 0.3em;
-}
-nav form input[type=text], nav form input[type=password] {
-  width: 8em;
-}
+
 .flash {
   font-size: 1.2em;
   display: block;
@@ -145,70 +180,85 @@ nav form input[type=text], nav form input[type=password] {
   padding: 0.6em;
   margin: 1em;
 }
+
 .notice {
-  color: rgba(43,198,184,1);
-  border-color: rgba(43,198,184,1);
-  background-color: rgba(43,198,184,0.1);
+  color: $highlight-color;
+  border-color: $highlight-color;
+  background-color: $highlight-color-faded;
 }
+
 .warning {
-  color: rgba(231,76,60,1);
-  border-color: rgba(231,76,60,1);
-  background-color: rgba(231,76,60,0.1);
+  color: $logo-color;
+  border-color: $logo-color;
+  background-color: $logo-color-faded;
 }
+
 .mobile-nav {
   display: none;
 }
+
 .page-details {
   margin: -1em 0 1em 0;
   text-align: right;
   padding-right: 1em;
 }
+
 .feed-list {
   font-size: 1.2em;
-  color: #34495E;
+  color: $primary-color;
   list-style: none;
+
   li {
     margin-bottom: 0.5em;
   }
+
   a {
     color: inherit;
     text-decoration: none;
   }
+
   a:hover {
-    color: #E74C3C;
+    color: $logo-color;
   }
 }
+
 .feed-controls {
-  color: #2BC6B8;
+  color: $highlight-color;
   font-size: 0.8em;
   margin-left: 1em;
+
   a {
     color: inherit;
     text-decoration: none;
   }
+
   a:hover {
-    color: #E74C3C;
+    color: $logo-color;
   }
 }
+
 .pagination {
   text-align: center;
   margin: 1em auto;
   padding: 0.5em 0;
   font-size: 1.2em;
-  border-top: 1px dotted #34495E;
-  border-bottom: 1px dotted #34495E;
+  border-top: 1px dotted $primary-color;
+  border-bottom: 1px dotted $primary-color;
+
   a {
     color: inherit;
     text-decoration: none;
     font-weight: bold;
   }
+
   a:hover {
-    color: #E74C3C;
+    color: $logo-color;
   }
 }
+
 .refresh-link {
   display: block;
   text-align: right;
-  color: #2BC6B8;
+  color: $highlight-color;
   text-decoration: none;
 }
