@@ -76,6 +76,7 @@ module FeedsHelper
         a = feed.articles.new
         a.title = entry.title
         a.published = entry.published
+        a.url = entry.url
         a.save
       end
     end
