@@ -70,7 +70,6 @@ module FeedsHelper
     feed = args[:feed]
     entries = args.has_key?(:entries) ? args[:entries] : get_feed_entries(feed: feed)
 
-    new_articles = []
     entries.each do |entry|
       a = Article.find_by(url: entry.url)
       if a.nil?
@@ -78,27 +77,28 @@ module FeedsHelper
         a.title = entry.title
         a.published = entry.published
         a.save
-        new_articles.push(a)
       end
     end
 
     if args.has_key?(:user)
       user = args[:user]
-      create_user_articles(user: user, articles: new_articles)
+      create_user_articles(user: user, feed: feed)
     end
   end
 
   def create_user_articles(**args)
-    # Check for required keys (:user, :articles)
-    if not args.has_key?(:user) or not args.has_key?(:articles)
+    # Check for required keys (:user, :feed)
+    if not args.has_key?(:user) or not args.has_key?(:feed)
       return
     end
 
     user = args[:user]
-    articles = args[:articles]
+    articles = args[:feed].articles
 
     articles.each do |article|
-      user.user_articles.create(article: article)
+      if user.user_articles.find_by(article: article).nil?
+        user.user_articles.create(article: article)
+      end
     end
   end
 
