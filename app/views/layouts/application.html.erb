@@ -25,9 +25,9 @@
   </nav>
 </header>
 
-<main>
+<h1><%= yield :page_title %></h1>
 
-  <h1><%= yield :page_title %></h1>
+<main>
 
   <% if flash[:notice] %>
     <div class="flash notice"><%= raw flash[:notice] %></div>
