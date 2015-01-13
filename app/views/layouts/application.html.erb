@@ -29,12 +29,13 @@
 
 <main>
 
-  <% if flash[:notice] %>
-    <div class="flash notice"><%= raw flash[:notice] %></div>
-  <% end %>
-
-  <% if flash[:warning] %>
-    <div class="flash warning"><%= raw flash[:warning] %></div>
+  <% flash.each do |key, value| %>
+    <% Array.new(value).each do |elem| %>
+      <div class="flash <%= key %>">
+        <%= raw elem %>
+        <%= link_to 'x', 'javascript:void(0);', class: 'close-link' %>
+      </div>
+    <% end %>
   <% end %>
   
 	<%= yield %>

@@ -31,7 +31,7 @@
       login @user
       redirect_to user_url(username: @user.username)
     else
-      flash.now[:warning] = @user.errors.full_messages.join('<br>')
+      flash.now[:warning] += @user.errors.full_messages
       render 'new'
     end
   end
@@ -44,11 +44,11 @@
       if current_user.update(user_params)
         redirect_to user_path(username: current_user.username)
       else
-        flash.now[:warning] = current_user.errors.full_messages.join('<br>')
+        flash.now[:warning] += current_user.errors.full_messages
         render 'edit'
       end
     else
-      flash.now[:warning] = 'Old password is incorrect'
+      flash.now[:warning] << 'Old password is incorrect'
       render 'edit'
     end
   end

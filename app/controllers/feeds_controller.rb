@@ -29,7 +29,7 @@ class FeedsController < ApplicationController
       if @feed.valid?
         feed_data = Feedjira::Feed.fetch_and_parse(@feed.url)
         if feed_data == 200
-          flash.now[:warning] = 'URL is not a valid RSS feed'
+          flash.now[:warning] << 'URL is not a valid RSS feed'
           render 'new'
         else
           current_user.subscriptions.create(feed: @feed)
@@ -40,15 +40,16 @@ class FeedsController < ApplicationController
           redirect_to @feed
         end
       else
-        flash.now[:warning] = @feed.errors.full_messages.join('<br>')
+        flash.now[:warning] += @feed.errors.full_messages
         render 'new'
       end
     else  # The feed already exists
       if current_user.feeds.find_by(url: @feed.url).nil?
         current_user.subscriptions.create(feed: @feed)
+        flash[:notice] << "#{@feed.name} added"
         redirect_to @feed
       else  # The user is already subscribed
-        flash[:notice] = "You are already subscribed to #{@feed.name}"
+        flash[:notice] << "You are already subscribed to #{@feed.name}"
         redirect_to @feed
       end
     end
@@ -61,14 +62,14 @@ class FeedsController < ApplicationController
   def update
     feed = Feed.find(params[:id])
     feed.update(feed_params)
-    flash[:notice] = 'Feed updated.'
+    flash[:notice] << 'Feed updated'
     redirect_to feed
   end
 
   def destroy
     feed = Feed.find(params[:id])
     feed.destroy
-    flash[:notice] = 'Feed deleted.'
+    flash[:notice] << 'Feed deleted'
     redirect_to feeds_url
   end
 

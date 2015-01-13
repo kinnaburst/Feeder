@@ -1,6 +1,6 @@
 RELOAD_TIME = 15 * 60 * 1000  // 15 minutes
 
-$(document).on('page:load', function() {
+$(document).on('page:change', function() {
   setTimeout(reloadPage, RELOAD_TIME);
 });
 

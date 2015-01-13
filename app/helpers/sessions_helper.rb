@@ -20,7 +20,7 @@ module SessionsHelper
     @user = User.find_by(username: params[:username])
 
     if !logged_in?
-      flash[:warning] = 'You must be logged in or create an account.'
+      flash[:warning] << 'You must be logged in or create an account.'
       redirect_to login_url and return
     end
 
@@ -29,7 +29,7 @@ module SessionsHelper
     end
 
     if current_user.id != @user.id
-      flash[:warning] = 'You can only view and edit your account.'
+      flash[:warning] << 'You can only view and edit your account.'
       redirect_to user_url(username: current_user.username) and return
     end
   end

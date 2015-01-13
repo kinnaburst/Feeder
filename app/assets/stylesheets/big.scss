@@ -269,3 +269,13 @@ form {
 .edit-link:hover, .del-link:hover {
   background-position: 0 16px;
 }
+
+.close-link {
+  color: inherit;
+  text-decoration: none;
+  float: right;
+}
+
+.close-link:hover {
+  font-weight: bold;
+}

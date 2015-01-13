@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       login user
       redirect_to user_url(username: user.username)
     else
-      flash.now[:warning] = 'Invalid login credentials.'
+      flash.now[:warning] << 'Invalid login credentials'
       render :new
     end
   end
