@@ -1,6 +1,6 @@
 <% page_start = (@page-1) * @page_size %>
 
-<%= link_to '[refresh]', url_for(params), class: 'refresh-link' %>
+<%= link_to image_tag('refresh.png', class: 'refresh-img') + ' refresh', url_for(params), class: 'refresh-link' %>
 <% @articles.slice(page_start, @page_size).each do |article| %>
   <article>
     <h2><%= link_to article.title, article.url %></h2>

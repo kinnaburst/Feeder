@@ -1,12 +1,8 @@
-<% content_for :page_title do %><%= @feed.name %><% end %>
-
-<p class="page-details">
-  [
-  <%= link_to 'Edit', edit_feed_path(@feed), class: 'page-btn', method: :get %>
-  |
-  <%= link_to 'Delete', feed_path(@feed), class: 'page-btn', method: :delete, data: { confirm: 'Are you sure?' } %>
-  ]
-</p>
+<% content_for :page_title do %>
+  <%= @feed.name %>
+  <%= link_to '', edit_feed_path(@feed, username: @user.username), class: 'edit-link', method: :get %>
+  <%= link_to '', feed_path(@feed, username: @user.username), class: 'del-link', method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 
 <%= render 'pagination' %>
 

@@ -3,6 +3,9 @@
   before_filter :login_check, only: [:show, :edit, :update, :destroy]
 
   def index
+    if logged_in?
+      redirect_to user_url(username: current_user.username) and return
+    end
   end
 
   def show

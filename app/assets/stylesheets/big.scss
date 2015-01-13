@@ -222,21 +222,6 @@ form {
   }
 }
 
-.feed-controls {
-  color: $highlight-color;
-  font-size: 0.8em;
-  margin-left: 1em;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: $logo-color;
-  }
-}
-
 .pagination {
   text-align: center;
   margin: 1em auto;
@@ -261,4 +246,26 @@ form {
   text-align: right;
   color: $highlight-color;
   text-decoration: none;
+}
+
+.refresh-img {
+  vertical-align: middle;
+}
+
+.edit-link {
+  background-image: image-url('edit.png');
+}
+
+.del-link {
+  background-image: image-url('delete.png');
+}
+
+.edit-link, .del-link {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.edit-link:hover, .del-link:hover {
+  background-position: 0 16px;
 }
