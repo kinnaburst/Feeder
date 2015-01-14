@@ -74,7 +74,16 @@
         color: #E74C3C;
       }
       article {
-        margin-bottom: 5em;
+        border-bottom: 1px solid #34495E;
+        padding: 0.5em 0.5em;
+      }
+      article h2 {
+        font-size: 1em;
+        font-weight: bold;
+        display: inline-block;
+      }
+      article p {
+        display: inline-block;
       }
       main {
         display: block;
@@ -145,6 +154,34 @@
       .mobile-nav {
         display: none;
       }
+
+      table.articles {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table.articles th {
+        padding: 0.5em 0.3em;
+        text-align: left;
+      }
+      table.articles td {
+        white-space: nowrap;
+        padding: 0.5em 0.3em;
+        margin: 0;
+        border-top: 1px dotted #34495E;
+        cursor: pointer;
+      }
+      table.articles tr:hover > td.title {
+        font-weight: bold;
+      }
+      table.articles .check {
+        width: auto;
+      }
+      table.articles .title {
+        width: 100%;
+      }
+      table.articles .pub {
+        width: auto;
+      }
     </style>
     <style type="text/css" media="screen and (max-device-width: 480px)">
       header #logo {
@@ -188,21 +225,28 @@
       <h1>Page Title</h1>
       <div class="flash notice">This is a notice</div>
       <div class="flash warning">This is a warning</div>
-      <article>
-        <h2><a href="#">Article Title</a></h2>
-        <p class="details">Article <a href="#">details</a></p>
-        <p>The article</p>
-      </article>
-      <article>
-        <h2><a href="#">Article Title</a></h2>
-        <p class="details">Article <a href="#">details</a></p>
-        <p>The article</p>
-      </article>
-      <article>
-        <h2><a href="#">Article Title</a></h2>
-        <p class="details">Article <a href="#">details</a></p>
-        <p>The article</p>
-      </article>
+      <table class="articles">
+        <tr>
+          <th class='check'><input type="checkbox"></th>
+          <th class='title'>Article Title</th>
+          <th class='pub'>Published</th>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td class='title'>How to Create a Website in an Hour</td>
+          <td>Jan 14, 2015</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td class='title'>10 Ways to go Insane</td>
+          <td>Jan 14, 2015</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td class='title'>New Workout v5.1</td>
+          <td>Jan 14, 2015</td>
+        </tr>
+      </table>
       <form>
         <label>Username</label>
         <input type="text">

@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   patch ':username', to: 'users#update'
   delete ':username', to: 'users#destroy', as: :destroy_user
 
-  scope ":username" do
+  scope ':username' do
     resources :feeds
   end
+
+  get ':username/hide/:id', to: 'users#hide_article'
 
   root 'users#index'
   

@@ -11,13 +11,13 @@
   def show
     @user = User.find_by(username: params[:username])
     refresh_feeds(user: @user)
-    @articles = @user.articles.order(published: :desc)
+    @articles = @user.articles.where(user_articles: {hidden: false}).order(published: :desc)
     if params.has_key?(:page)
       @page = params[:page].to_i
     else
       @page = 1
     end
-    @page_size = 5
+    @page_size = 10
   end
 
   def new
@@ -56,6 +56,16 @@
   def destroy
     current_user.delete
     redirect_to root_url
+  end
+
+  def hide_article
+    user_article = current_user.user_articles.find_by(article_id: params[:id])
+    if user_article.nil?
+      return
+    end
+
+    user_article.hidden = true
+    user_article.save
   end
 
   def default_url_options(options={})

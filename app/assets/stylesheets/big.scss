@@ -279,3 +279,44 @@ form {
 .close-link:hover {
   font-weight: bold;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  tr {
+    cursor: pointer;
+  }
+
+  tr:hover {
+    background-color: $highlight-color-faded;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td {  
+    border-top: 1px dotted #34495E;
+  }
+
+  td.title {
+    width: 100%;
+  }
+
+  td,th{
+    white-space: nowrap;
+    padding: 0.5em 0.3em;
+    margin: 0;
+  }
+}
+
+.hide-article-btn {
+  background-image: asset-url('delete.png');
+  width: 16px;
+  height: 16px;
+}
+
+.hide-article-btn:hover {
+  background-position: 0 16px;
+}

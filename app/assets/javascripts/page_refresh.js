@@ -5,5 +5,5 @@ $(document).on('page:change', function() {
 });
 
 function reloadPage() {
-  window.location.href = document.location.href
+  location.reload();
 }

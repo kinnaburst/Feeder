@@ -15,7 +15,7 @@ class FeedsController < ApplicationController
     else
       @page = 1
     end
-    @page_size = 5
+    @page_size = 10
   end
 
   def new

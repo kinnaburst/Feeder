@@ -1,12 +1,22 @@
 <% page_start = (@page-1) * @page_size %>
 
 <%= link_to image_tag('refresh.png', class: 'refresh-img') + ' refresh', url_for(params), class: 'refresh-link' %>
-<% @articles.slice(page_start, @page_size).each do |article| %>
-  <article>
-    <h2><%= link_to article.title, article.url, target: '_blank' %></h2>
-    <p class="details">
-      <%= article.published.to_formatted_s(:long) %>
-      in <%= link_to article.feed.name, article.feed %>
-    </p>
-  </article>
-<% end %>
+
+<table class="articles">
+
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>Published</th>
+  </tr>
+
+  <% @articles.slice(page_start, @page_size).each do |article| %>
+
+  <tr data-hide-url="<%= user_path + "/hide/#{article.id}" %>" data-url="<%= article.url %>">
+    <td><div class="hide-article-btn"></div></td>
+    <td class="title"><%= article.title[0...80] %><%= article.title.length > 80 ? '...' : '' %></td>
+    <td><%= article.published.to_formatted_s(:short) %></td>
+  </tr>
+
+  <% end %>
+</table>
