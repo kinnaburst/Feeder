@@ -6,6 +6,7 @@ $highlight-color: rgba(43,198,184,1);
 $highlight-color-faded: rgba(43,198,184,0.1);
 $logo-color: rgba(231,76,60,1);
 $logo-color-faded: rgba(231,76,60,0.1);
+$loading-screen-color: rgba(0,0,0,0.8);
 
 body {
   background-color: $background-color;
@@ -319,4 +320,18 @@ table {
 
 .hide-article-btn:hover {
   background-position: 0 16px;
+}
+
+.loading-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $loading-screen-color;
+  background-image: asset_url('loading.gif');
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 1000;
+  visibility: hidden;
 }

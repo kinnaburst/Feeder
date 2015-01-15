@@ -8,7 +8,6 @@ $(document).on('page:change', function() {
 function hideArticle(row) {
   var hide_url = row.data('hide-url');
   row.remove();
-  $.get(hide_url).always(function() {
-    location.reload();
-  });
+  paginateArticles();
+  $.get(hide_url);
 }

@@ -8,6 +8,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div class="loading-screen"></div>
+
 <header>
   <% logo_link = current_user ? user_path : root_path %>
   <%=  link_to raw('<div id="logo"></div>'), logo_link %>
