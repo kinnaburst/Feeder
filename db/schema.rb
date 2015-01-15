@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112195849) do
+ActiveRecord::Schema.define(version: 20150115170401) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "feed_id"
@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(version: 20150112195849) do
   create_table "user_articles", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "article_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "hidden",     default: false
-    t.boolean  "clicked",    default: false
+    t.integer  "subscription_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.boolean  "hidden"
   end
 
   add_index "user_articles", ["article_id"], name: "index_user_articles_on_article_id"
+  add_index "user_articles", ["subscription_id"], name: "index_user_articles_on_subscription_id"
   add_index "user_articles", ["user_id"], name: "index_user_articles_on_user_id"
 
   create_table "users", force: :cascade do |t|

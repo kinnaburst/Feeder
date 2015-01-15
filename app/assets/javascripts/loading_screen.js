@@ -4,6 +4,5 @@ $(document).on('page:change', function() {
 });
 
 $(document).on('page:fetch submit', function() {
-  console.log('loading...');
   $('.loading-screen').delay(300).show({duration:0});
 })
