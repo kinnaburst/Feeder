@@ -3,6 +3,7 @@ $(document).on('page:change', function() {
   $('.loading-screen').hide();
 });
 
-$(document).on('page:fetch', function() {
-  $('.loading-screen').show();
+$(document).on('page:fetch submit', function() {
+  console.log('loading...');
+  $('.loading-screen').delay(300).show({duration:0});
 })

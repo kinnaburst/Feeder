@@ -62,7 +62,8 @@ class FeedsController < ApplicationController
 
   def destroy
     feed = Feed.find(params[:id])
-    feed.destroy
+    sub = current_user.subscriptions.find_by(feed: feed)
+    sub.destroy
     flash[:notice] << 'Feed deleted'
     redirect_to feeds_url
   end
