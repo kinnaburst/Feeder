@@ -12,12 +12,6 @@
     @user = User.find_by(username: params[:username])
     refresh_feeds(user: @user)
     @articles = @user.articles.where(user_articles: {hidden: false}).order(published: :desc)
-    if params.has_key?(:page)
-      @page = params[:page].to_i
-    else
-      @page = 1
-    end
-    @page_size = 10
   end
 
   def new

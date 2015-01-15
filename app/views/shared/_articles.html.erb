@@ -1,4 +1,5 @@
-<% page_start = (@page-1) * @page_size %>
+<nav class='pagination'>
+</nav>
 
 <%= link_to image_tag('refresh.png', class: 'refresh-img') + ' refresh', url_for(params), class: 'refresh-link' %>
 
@@ -10,7 +11,7 @@
     <th>Published</th>
   </tr>
 
-  <% @articles.slice(page_start, @page_size).each do |article| %>
+  <% @articles.each do |article| %>
 
   <tr data-hide-url="<%= user_path + "/hide/#{article.id}" %>" data-url="<%= article.url %>">
     <td><div class="hide-article-btn"></div></td>
@@ -20,3 +21,6 @@
 
   <% end %>
 </table>
+
+<nav class='pagination'>
+</nav>

@@ -10,12 +10,6 @@ class FeedsController < ApplicationController
     @feed = current_user.feeds.find(params[:id])
     refresh_feed(user: current_user, feed: @feed)
     @articles = @feed.articles.order(published: :desc)
-    if params.has_key?(:page)
-      @page = params[:page].to_i
-    else
-      @page = 1
-    end
-    @page_size = 10
   end
 
   def new
