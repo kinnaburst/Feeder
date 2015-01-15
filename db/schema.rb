@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115170401) do
+ActiveRecord::Schema.define(version: 20150115203503) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "feed_id"
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20150115170401) do
     t.integer  "user_id"
     t.integer  "article_id"
     t.integer  "subscription_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.boolean  "hidden"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "hidden",          default: false
   end
 
   add_index "user_articles", ["article_id"], name: "index_user_articles_on_article_id"

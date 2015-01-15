@@ -95,10 +95,15 @@ module FeedsHelper
 
     user = args[:user]
     articles = args[:feed].articles
+    subscription = user.subscriptions.find_by(feed: args[:feed])
 
     articles.each do |article|
       if user.user_articles.find_by(article: article).nil?
-        user.user_articles.create(article: article)
+        ua = user.user_articles.new
+        ua.article = article
+        ua.subscription = subscription
+        ua.hidden = false
+        ua.save
       end
     end
   end

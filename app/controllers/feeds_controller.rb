@@ -31,6 +31,7 @@ class FeedsController < ApplicationController
           @feed.last_updated = DateTime.now
           @feed.save
           create_articles(user: current_user, feed: @feed, entries: feed_data.entries)
+          flash[:notice] << "Added #{@feed.name} feed"
           redirect_to @feed
         end
       else
