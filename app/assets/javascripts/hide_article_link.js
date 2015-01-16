@@ -1,6 +1,6 @@
 $(document).on('page:change', function() {
 
-  $('.hide-article-btn').on('click', function(e) {
+  $('.hide-cell').on('click', function(e) {
     e.stopPropagation();
     hideArticle($(this).parents('tr'));
   });

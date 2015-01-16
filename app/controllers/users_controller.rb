@@ -57,11 +57,13 @@
   def hide_article
     user_article = current_user.user_articles.find_by(article_id: params[:id])
     if user_article.nil?
-      return
+      render 'null' and return
     end
 
     user_article.hidden = true
     user_article.save
+
+    render 'null'
   end
 
   def default_url_options(options={})

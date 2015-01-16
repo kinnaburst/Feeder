@@ -14,7 +14,7 @@
   <% @articles.each do |article| %>
 
   <tr class="article" data-hide-url="<%= user_path + "/hide/#{article.id}" %>" data-url="<%= article.url %>">
-    <td><div class="hide-article-btn"></div></td>
+    <td class="hide-cell"><div class="hide-article-btn"></div></td>
     <td class="title"><%= article.title[0...80] %><%= article.title.length > 80 ? '...' : '' %></td>
     <td><%= article.published.to_formatted_s(:long) %></td>
   </tr>

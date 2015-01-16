@@ -312,14 +312,14 @@ table {
   }
 }
 
+.hide-cell:hover > .hide-article-btn {
+  background-position : 0 16px;
+}
+
 .hide-article-btn {
   background-image: asset-url('delete.png');
   width: 16px;
   height: 16px;
-}
-
-.hide-article-btn:hover {
-  background-position: 0 16px;
 }
 
 .loading-screen {
