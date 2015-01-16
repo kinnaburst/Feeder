@@ -12,8 +12,8 @@ function paginateArticles() {
 
   var articles = $('.articles tr');
 
-  var end = currentPage * articlesPerPage;
-  var start = end - articlesPerPage + 1;
+  var end = (currentPage * articlesPerPage) - 1;
+  var start = end - articlesPerPage;
 
   // Decide which articles to show and hide
   $.each(articles, function(index, article) {
