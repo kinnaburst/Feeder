@@ -1,5 +1,12 @@
 module FeedsHelper
 
+  def refresh_all_feeds
+    feeds = Feed.all
+    feeds.each do |feed|
+      refresh_feed(feed: feed)
+    end
+  end
+
   def refresh_feeds(**args)
     # Check for require keys (:user)
     if not args.has_key?(:user)
@@ -16,6 +23,8 @@ module FeedsHelper
         refresh_feed(feed: feed, user: user)
       end
     end
+
+    refresh_all_feeds
   end
 
   def refresh_feed(**args)

@@ -36,6 +36,7 @@
   def update
     if current_user.authenticate(params[:user][:old_password])
       if current_user.update(user_params)
+        flash[:notice] << 'Password updated'
         redirect_to user_path(username: current_user.username)
       else
         flash.now[:warning] += current_user.errors.full_messages
@@ -48,6 +49,7 @@
   end
 
   def destroy
+    current_user.subscriptions.destroy_all
     current_user.delete
     redirect_to root_url
   end

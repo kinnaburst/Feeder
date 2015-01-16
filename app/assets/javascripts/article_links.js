@@ -1,8 +1,8 @@
 $(document).on('page:change', function() {
-  $('tr').on('click', function() {
+
+  $('.article').on('click', function() {
     var url = $(this).data('url');
-    if(url.length > 0) {
-      window.open(url);
-    }
+    window.open(url);
   });
+  
 });
