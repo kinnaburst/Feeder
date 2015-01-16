@@ -10,10 +10,15 @@ $(document).on('page:change', function () {
 
 function paginateArticles() {
 
+  var maxPages = Math.ceil($('.article').length / articlesPerPage);
+  if (currentPage > maxPages) {
+    currentPage = maxPages;
+  }
+
   var articles = $('.articles tr');
 
-  var end = (currentPage * articlesPerPage) - 1;
-  var start = end - articlesPerPage;
+  var end = (currentPage * articlesPerPage);
+  var start = end - articlesPerPage + 1;
 
   // Decide which articles to show and hide
   $.each(articles, function(index, article) {
@@ -30,7 +35,7 @@ function paginateArticles() {
 
 function updatePageControls() {
 
-  var maxPages = Math.ceil($('.articles tr').length / articlesPerPage);
+  var maxPages = Math.ceil($('.article').length / articlesPerPage);
   var pageControls = $('.pagination');
 
   var controlHtml = '';

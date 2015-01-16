@@ -77,7 +77,7 @@ module FeedsHelper
     end
 
     feed = args[:feed]
-    entries = args.has_key?(:entries) ? args[:entries] : get_feed_entries(feed: feed)
+    entries = (args.has_key?(:entries) and not args[:entires].nil?) ? args[:entries] : get_feed_entries(feed: feed)
 
     entries.each do |entry|
       a = Article.find_by(url: entry.url)
